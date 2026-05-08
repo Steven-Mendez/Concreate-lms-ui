@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Logo } from "@/components/ui/logo"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Navbar() {
   const pathname = usePathname()
@@ -26,7 +27,7 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -45,7 +46,7 @@ export function Navbar() {
                 key={link.label}
                 href={link.href as any}
                 className={`relative pb-1 text-sm font-medium transition-colors ${
-                  active ? "text-foreground" : "text-zinc-500 hover:text-foreground"
+                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -59,14 +60,15 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <LanguageSwitcher />
           
           <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
-          <button className="rounded-lg p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-foreground">
+          <button className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
             <Bell className="h-5 w-5" />
           </button>
-          <button className="rounded-lg p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-foreground">
+          <button className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
             <HelpCircle className="h-5 w-5" />
           </button>
 
@@ -74,7 +76,7 @@ export function Navbar() {
 
           <Link href="/instructor/dashboard">
             <Avatar className="h-8 w-8 cursor-pointer">
-              <AvatarFallback className="bg-primary text-xs font-semibold text-white">
+              <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
                 SM
               </AvatarFallback>
             </Avatar>

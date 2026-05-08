@@ -7,7 +7,7 @@ export function Footer() {
   const t = useTranslations("Footer")
 
   return (
-    <footer className="mt-20 border-t border-zinc-200 bg-white">
+    <footer className="mt-20 border-t border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
         <p className="text-xs text-muted-foreground">{t("copyright")}</p>
         <nav className="flex items-center gap-6 text-xs text-muted-foreground">

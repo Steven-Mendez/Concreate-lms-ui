@@ -8,6 +8,7 @@ import "../globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { routing } from "@/i18n/routing"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -38,12 +39,14 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${inter.variable} antialiased`}>
-      <body className="bg-white font-sans text-foreground">
+    <html lang={locale} className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <body className="bg-background font-sans text-foreground">
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <ThemeProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
