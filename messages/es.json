@@ -87,7 +87,9 @@
     "studentsEnrolled": "estudiantes inscritos",
     "lastUpdated": "Última actualización",
     "viewAnalytics": "Ver Analíticas",
-    "edit": "Editar"
+    "edit": "Editar",
+    "published": "Publicado",
+    "draft": "Borrador"
   },
   "InstructorAnalytics": {
     "dashboard": "Dashboard",

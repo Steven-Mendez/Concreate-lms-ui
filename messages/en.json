@@ -87,7 +87,9 @@
     "studentsEnrolled": "students enrolled",
     "lastUpdated": "Last updated",
     "viewAnalytics": "View Analytics",
-    "edit": "Edit"
+    "edit": "Edit",
+    "published": "Published",
+    "draft": "Draft"
   },
   "InstructorAnalytics": {
     "dashboard": "Dashboard",
