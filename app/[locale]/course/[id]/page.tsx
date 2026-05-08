@@ -1,5 +1,6 @@
 import { CheckCircle2, Circle, Clock, BookOpen } from "lucide-react"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -13,6 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Link } from "@/i18n/navigation"
 
 const modules = [
   {
@@ -60,13 +62,15 @@ const sidebarModules = [
 ]
 
 export default function CourseDetailPage() {
+  const t = useTranslations("CourseDetail")
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-muted-foreground">
-        <a href="/browse" className="hover:text-foreground transition-colors">
-          Catálogo
-        </a>
+        <Link href="/browse" className="hover:text-foreground transition-colors">
+          {t("catalog")}
+        </Link>
         <span className="mx-2">›</span>
         <span className="text-foreground">AutoCAD para Arquitectura</span>
       </nav>
@@ -96,11 +100,11 @@ export default function CourseDetailPage() {
             <Badge variant="outline">AutoCAD</Badge>
             <span className="flex items-center gap-1 text-sm text-muted-foreground">
               <Clock className="h-4 w-4" />
-              10 horas
+              10 {t("hours")}
             </span>
             <span className="flex items-center gap-1 text-sm text-muted-foreground">
               <BookOpen className="h-4 w-4" />
-              15 lecciones
+              15 {t("lessons")}
             </span>
           </div>
 
@@ -130,7 +134,7 @@ export default function CourseDetailPage() {
           <Separator className="my-6" />
 
           {/* Course Modules Accordion */}
-          <h2 className="mb-4 text-xl font-semibold">Contenido del Curso</h2>
+          <h2 className="mb-4 text-xl font-semibold">{t("courseContent")}</h2>
           <Accordion type="multiple" defaultValue={["module-0", "module-1"]}>
             {modules.map((module, idx) => (
               <AccordionItem key={idx} value={`module-${idx}`}>
@@ -141,7 +145,7 @@ export default function CourseDetailPage() {
                   <ul className="space-y-3">
                     {module.lessons.map((lesson, lessonIdx) => (
                       <li key={lessonIdx}>
-                        <a
+                        <Link
                           href="/lesson/1"
                           className="flex items-center justify-between rounded-md px-1 py-0.5 hover:bg-zinc-50 transition-colors"
                         >
@@ -164,7 +168,7 @@ export default function CourseDetailPage() {
                           <span className="text-xs text-muted-foreground">
                             {lesson.duration}
                           </span>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -181,7 +185,7 @@ export default function CourseDetailPage() {
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-muted-foreground">
-                    Tu progreso
+                    {t("yourProgress")}
                   </span>
                   <span className="text-sm font-semibold text-primary">
                     65%
@@ -195,7 +199,7 @@ export default function CourseDetailPage() {
                   className="w-full bg-primary text-white hover:bg-primary/80"
                   asChild
                 >
-                  <a href="/lesson/1">Continuar Curso</a>
+                  <Link href="/lesson/1">{t("continueCourse")}</Link>
                 </Button>
 
                 <Separator />

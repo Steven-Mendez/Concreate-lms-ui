@@ -1,37 +1,39 @@
 import Image from "next/image"
 import { ArrowRight, CheckCircle2, PlayCircle, Star } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 
 export default function HomePage() {
+  const t = useTranslations("Home")
+
   return (
     <div className="flex flex-col">
       {/* 1. Hero Section */}
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
-            Aprende Creando
+            {t("heroTagline")}
           </p>
           <h1 className="text-5xl font-extrabold tracking-tight text-foreground leading-tight">
-            Domina AutoCAD, Revit y Rhino
+            {t("heroTitle")}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Plataforma educativa diseñada para estudiantes de arquitectura e ingeniería civil.
-            Cursos estructurados por niveles, tutoriales paso a paso y proyectos reales que
-            te llevan desde cero hasta una entrega profesional.
+            {t("heroDescription")}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
+            <Link
               href="/browse"
               className="flex items-center gap-2 rounded-md bg-primary px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5"
             >
-              Explorar cursos
+              {t("exploreCourses")}
               <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="/dashboard"
               className="flex items-center gap-2 rounded-md border-2 border-zinc-200 px-8 py-4 text-sm font-semibold text-foreground transition-all hover:bg-zinc-50 hover:border-zinc-300"
             >
-              Mi aprendizaje
-            </a>
+              {t("myLearning")}
+            </Link>
           </div>
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-2xl border border-zinc-100">
@@ -49,15 +51,15 @@ export default function HomePage() {
       <section className="bg-zinc-50 py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground">Habilidades esenciales para tu carrera</h2>
+            <h2 className="text-3xl font-bold text-foreground">{t("categoriesTitle")}</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-              Concreate te ayuda a dominar el software técnico más demandado en la industria para avanzar en tu trayectoria profesional.
+              {t("categoriesDescription")}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="group cursor-pointer rounded-2xl bg-white p-6 shadow-sm border border-zinc-100 transition-all hover:shadow-xl hover:-translate-y-1">
+            <Link href="/browse" className="group cursor-pointer rounded-2xl bg-white p-6 shadow-sm border border-zinc-100 transition-all hover:shadow-xl hover:-translate-y-1">
               <div className="relative aspect-square w-full mb-6 overflow-hidden rounded-xl bg-zinc-50">
                 <Image 
                   src="/images/category_autocad_icon_1778200530375.png"
@@ -66,15 +68,15 @@ export default function HomePage() {
                   className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="text-xl font-bold text-foreground">AutoCAD Profesional</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Planos, detalles constructivos y documentación 2D.</p>
+              <h3 className="text-xl font-bold text-foreground">{t("autocadTitle")}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t("autocadDesc")}</p>
               <div className="mt-4 flex items-center text-sm font-medium text-primary">
-                Ver cursos <ArrowRight className="ml-1 h-4 w-4" />
+                {t("viewCourses")} <ArrowRight className="ml-1 h-4 w-4" />
               </div>
-            </div>
+            </Link>
 
             {/* Card 2 */}
-            <div className="group cursor-pointer rounded-2xl bg-white p-6 shadow-sm border border-zinc-100 transition-all hover:shadow-xl hover:-translate-y-1">
+            <Link href="/browse" className="group cursor-pointer rounded-2xl bg-white p-6 shadow-sm border border-zinc-100 transition-all hover:shadow-xl hover:-translate-y-1">
               <div className="relative aspect-square w-full mb-6 overflow-hidden rounded-xl bg-zinc-50">
                 <Image 
                   src="/images/category_revit_icon_1778200552278.png"
@@ -83,15 +85,15 @@ export default function HomePage() {
                   className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="text-xl font-bold text-foreground">Revit & BIM</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Modelado 3D inteligente, cómputos y trabajo colaborativo.</p>
+              <h3 className="text-xl font-bold text-foreground">{t("revitTitle")}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t("revitDesc")}</p>
               <div className="mt-4 flex items-center text-sm font-medium text-primary">
-                Ver cursos <ArrowRight className="ml-1 h-4 w-4" />
+                {t("viewCourses")} <ArrowRight className="ml-1 h-4 w-4" />
               </div>
-            </div>
+            </Link>
 
             {/* Card 3 */}
-            <div className="group cursor-pointer rounded-2xl bg-white p-6 shadow-sm border border-zinc-100 transition-all hover:shadow-xl hover:-translate-y-1">
+            <Link href="/browse" className="group cursor-pointer rounded-2xl bg-white p-6 shadow-sm border border-zinc-100 transition-all hover:shadow-xl hover:-translate-y-1">
               <div className="relative aspect-square w-full mb-6 overflow-hidden rounded-xl bg-zinc-50">
                 <Image 
                   src="/images/category_rhino_icon_1778200564493.png"
@@ -100,12 +102,12 @@ export default function HomePage() {
                   className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="text-xl font-bold text-foreground">Rhino & Grasshopper</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Diseño paramétrico y geometrías complejas.</p>
+              <h3 className="text-xl font-bold text-foreground">{t("rhinoTitle")}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t("rhinoDesc")}</p>
               <div className="mt-4 flex items-center text-sm font-medium text-primary">
-                Ver cursos <ArrowRight className="ml-1 h-4 w-4" />
+                {t("viewCourses")} <ArrowRight className="ml-1 h-4 w-4" />
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -115,38 +117,38 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-4xl font-bold leading-tight">
-              Reinventa tu forma de proyectar
+              {t("premiumTitle")}
             </h2>
             <p className="mt-6 text-lg text-slate-300">
-              Obtén acceso ilimitado a nuestra biblioteca de proyectos reales. Aprende con metodologías probadas por expertos en arquitectura e ingeniería.
+              {t("premiumDescription")}
             </p>
             
             <div className="mt-10 space-y-6">
               <div className="flex items-start gap-4">
                 <CheckCircle2 className="h-6 w-6 text-blue-400 shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-white">Proyectos reales desde cero</h4>
-                  <p className="text-sm text-slate-400 mt-1">Practica con planos y modelos de edificios construidos.</p>
+                  <h4 className="font-semibold text-white">{t("feature1Title")}</h4>
+                  <p className="text-sm text-slate-400 mt-1">{t("feature1Desc")}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <PlayCircle className="h-6 w-6 text-blue-400 shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-white">Clases paso a paso</h4>
-                  <p className="text-sm text-slate-400 mt-1">Sin saltos mágicos. Entiende el "por qué" de cada herramienta.</p>
+                  <h4 className="font-semibold text-white">{t("feature2Title")}</h4>
+                  <p className="text-sm text-slate-400 mt-1">{t("feature2Desc")}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <Star className="h-6 w-6 text-blue-400 shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-white">Certificación profesional</h4>
-                  <p className="text-sm text-slate-400 mt-1">Valida tus conocimientos al completar cada especialización.</p>
+                  <h4 className="font-semibold text-white">{t("feature3Title")}</h4>
+                  <p className="text-sm text-slate-400 mt-1">{t("feature3Desc")}</p>
                 </div>
               </div>
             </div>
 
             <button className="mt-10 rounded-md bg-white px-8 py-4 text-sm font-bold text-slate-900 transition-colors hover:bg-slate-100">
-              Conoce los planes
+              {t("viewPlans")}
             </button>
           </div>
           
@@ -162,7 +164,7 @@ export default function HomePage() {
             <div className="absolute bottom-0 left-0 p-8 w-full">
               <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl border border-white/20 shadow-xl inline-block w-full">
                  <h3 className="text-2xl font-bold text-white mb-1">Concreate PRO</h3>
-                 <p className="text-slate-300 text-sm">Tu carrera, sin límites.</p>
+                 <p className="text-slate-300 text-sm">{t("proSubtitle")}</p>
               </div>
             </div>
           </div>
@@ -173,8 +175,8 @@ export default function HomePage() {
       <section className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-foreground">Únete a otros profesionales transformando su vida</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Más de 5,000 estudiantes ya están diseñando el futuro.</p>
+            <h2 className="text-3xl font-bold text-foreground">{t("testimonialsTitle")}</h2>
+            <p className="mt-4 text-lg text-muted-foreground">{t("testimonialsDescription")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -218,9 +220,9 @@ export default function HomePage() {
                       <p className="text-xs text-muted-foreground">{testimonial.role}</p>
                     </div>
                   </div>
-                  <a href="#" className="mt-4 inline-block text-xs font-semibold text-primary hover:underline">
-                    Ver curso: {testimonial.course}
-                  </a>
+                  <Link href="/course/1" className="mt-4 inline-block text-xs font-semibold text-primary hover:underline">
+                    {t("viewCourse")} {testimonial.course}
+                  </Link>
                 </div>
               </div>
             ))}

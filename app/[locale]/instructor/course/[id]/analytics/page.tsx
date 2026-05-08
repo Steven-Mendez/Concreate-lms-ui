@@ -6,6 +6,8 @@ import {
   Clock,
   ChevronLeft,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -21,47 +23,49 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const stats = [
-  { icon: Users, label: "Total Students", value: "842", change: "+12 this week" },
-  { icon: PlayCircle, label: "Lessons Completed", value: "14,203", change: "+340 today" },
-  { icon: Clock, label: "Avg. Watch Time", value: "38 min", change: "per session" },
-  { icon: TrendingUp, label: "Completion Rate", value: "67%", change: "+4% vs last month" },
-]
-
-const moduleStats = [
-  { module: "Design Foundations", enrolled: 842, completed: 780, rate: 93 },
-  { module: "Component Design", enrolled: 842, completed: 610, rate: 72 },
-  { module: "Responsive Design", enrolled: 842, completed: 420, rate: 50 },
-  { module: "Design Systems", enrolled: 842, completed: 210, rate: 25 },
-]
-
-const recentStudents = [
-  { name: "Alex Johnson", enrolled: "May 4, 2026", progress: 78, status: "In Progress" },
-  { name: "Maria Torres", enrolled: "May 3, 2026", progress: 100, status: "Completed" },
-  { name: "Kenji Nakamura", enrolled: "May 2, 2026", progress: 42, status: "In Progress" },
-  { name: "Priya Sharma", enrolled: "Apr 30, 2026", progress: 15, status: "Just Started" },
-  { name: "Omar Hassan", enrolled: "Apr 28, 2026", progress: 100, status: "Completed" },
-]
-
 export default function CourseAnalyticsPage() {
+  const t = useTranslations("InstructorAnalytics")
+
+  const stats = [
+    { icon: Users, label: t("totalStudents"), value: "842", change: "+12 this week" },
+    { icon: PlayCircle, label: t("lessonsCompleted"), value: "14,203", change: "+340 today" },
+    { icon: Clock, label: t("avgWatchTime"), value: "38 min", change: "per session" },
+    { icon: TrendingUp, label: t("completionRate"), value: "67%", change: "+4% vs last month" },
+  ]
+
+  const moduleStats = [
+    { module: "Design Foundations", enrolled: 842, completed: 780, rate: 93 },
+    { module: "Component Design", enrolled: 842, completed: 610, rate: 72 },
+    { module: "Responsive Design", enrolled: 842, completed: 420, rate: 50 },
+    { module: "Design Systems", enrolled: 842, completed: 210, rate: 25 },
+  ]
+
+  const recentStudents = [
+    { name: "Alex Johnson", enrolled: "May 4, 2026", progress: 78, status: "In Progress" },
+    { name: "Maria Torres", enrolled: "May 3, 2026", progress: 100, status: "Completed" },
+    { name: "Kenji Nakamura", enrolled: "May 2, 2026", progress: 42, status: "In Progress" },
+    { name: "Priya Sharma", enrolled: "Apr 30, 2026", progress: 15, status: "Just Started" },
+    { name: "Omar Hassan", enrolled: "Apr 28, 2026", progress: 100, status: "Completed" },
+  ]
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Header */}
       <div className="mb-8 flex items-center justify-between">
         <div>
           <div className="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
-            <a href="/instructor/dashboard" className="hover:text-foreground transition-colors flex items-center gap-1">
+            <Link href="/instructor/dashboard" className="hover:text-foreground transition-colors flex items-center gap-1">
               <ChevronLeft className="h-3.5 w-3.5" />
-              Dashboard
-            </a>
+              {t("dashboard")}
+            </Link>
             <span>›</span>
             <span>UI Design Mastery</span>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight">Course Analytics</h1>
-          <p className="mt-1 text-muted-foreground">UI Design Mastery — Performance overview</p>
+          <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
+          <p className="mt-1 text-muted-foreground">{t("subtitle")}</p>
         </div>
         <Button variant="outline" asChild>
-          <a href="/instructor/course/1/edit">Edit Course</a>
+          <Link href="/instructor/course/1/edit">{t("editCourse")}</Link>
         </Button>
       </div>
 
@@ -84,14 +88,14 @@ export default function CourseAnalyticsPage() {
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-5">
         {/* Module Completion */}
         <div className="lg:col-span-3">
-          <h2 className="mb-4 text-lg font-semibold">Module Completion</h2>
+          <h2 className="mb-4 text-lg font-semibold">{t("moduleCompletion")}</h2>
           <Card>
             <CardContent className="pt-6 space-y-5">
               {moduleStats.map((mod) => (
                 <div key={mod.module}>
                   <div className="mb-1.5 flex items-center justify-between text-sm">
                     <span className="font-medium">{mod.module}</span>
-                    <span className="text-muted-foreground">{mod.completed}/{mod.enrolled} students</span>
+                    <span className="text-muted-foreground">{mod.completed}/{mod.enrolled} {t("students")}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Progress value={mod.rate} className="flex-1" />
@@ -105,16 +109,16 @@ export default function CourseAnalyticsPage() {
 
         {/* Quick Stats */}
         <div className="lg:col-span-2">
-          <h2 className="mb-4 text-lg font-semibold">At a Glance</h2>
+          <h2 className="mb-4 text-lg font-semibold">{t("atAGlance")}</h2>
           <Card className="h-fit">
             <CardContent className="pt-6 space-y-4">
               {[
-                { label: "Published", value: "May 2, 2026" },
-                { label: "Last Updated", value: "May 5, 2026" },
-                { label: "Total Modules", value: "4 modules" },
-                { label: "Total Lessons", value: "15 lessons" },
-                { label: "Total Duration", value: "12 hours" },
-                { label: "Avg. Rating", value: "4.8 / 5.0" },
+                { label: t("published"), value: "May 2, 2026" },
+                { label: t("lastUpdated"), value: "May 5, 2026" },
+                { label: t("totalModules"), value: "4 modules" },
+                { label: t("totalLessons"), value: "15 lessons" },
+                { label: t("totalDuration"), value: "12 hours" },
+                { label: t("avgRating"), value: "4.8 / 5.0" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">{item.label}</span>
@@ -128,15 +132,15 @@ export default function CourseAnalyticsPage() {
 
       {/* Recent Students Table */}
       <Separator className="my-8" />
-      <h2 className="mb-4 text-lg font-semibold">Recent Students</h2>
+      <h2 className="mb-4 text-lg font-semibold">{t("recentStudents")}</h2>
       <Card>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Student</TableHead>
-              <TableHead>Enrolled</TableHead>
-              <TableHead>Progress</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead>{t("student")}</TableHead>
+              <TableHead>{t("enrolled")}</TableHead>
+              <TableHead>{t("progress")}</TableHead>
+              <TableHead>{t("status")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

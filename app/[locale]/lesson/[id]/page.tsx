@@ -1,4 +1,6 @@
 import { CheckCircle2, Circle, PlayCircle } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
@@ -11,17 +13,19 @@ const lessons = [
 ]
 
 export default function LessonPage() {
+  const t = useTranslations("Lesson")
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-muted-foreground">
-        <a href="/course/1" className="transition-colors hover:text-foreground">
+        <Link href="/course/1" className="transition-colors hover:text-foreground">
           AutoCAD para Arquitectura
-        </a>
+        </Link>
         <span className="mx-2">›</span>
-        <a href="/course/1" className="transition-colors hover:text-foreground">
+        <Link href="/course/1" className="transition-colors hover:text-foreground">
           Módulo 2: Herramientas de Dibujo
-        </a>
+        </Link>
         <span className="mx-2">›</span>
         <span className="text-foreground">Lección 3</span>
       </nav>
@@ -33,7 +37,7 @@ export default function LessonPage() {
           <h2 className="text-sm font-semibold">Módulo 2: Herramientas de Dibujo</h2>
           <div className="mt-3">
             <div className="flex items-center justify-between text-xs text-muted-foreground">
-              <span>Progreso del módulo</span>
+              <span>{t("moduleProgress")}</span>
               <span>50%</span>
             </div>
             <Progress value={50} className="mt-1.5" />
@@ -42,7 +46,7 @@ export default function LessonPage() {
           <ul className="mt-6 space-y-1">
             {lessons.map((lesson, idx) => (
               <li key={idx}>
-                <a
+                <Link
                   href="/lesson/1"
                   className={`flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                     lesson.current
@@ -62,7 +66,7 @@ export default function LessonPage() {
                     />
                   )}
                   <span className="line-clamp-1">{lesson.title}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -104,13 +108,13 @@ export default function LessonPage() {
           {/* Navigation */}
           <div className="mt-8 border-t pt-6 flex items-center justify-between">
             <Button variant="outline" asChild>
-              <a href="/lesson/1">← Lección anterior</a>
+              <Link href="/lesson/1">{t("prevLesson")}</Link>
             </Button>
             <Button className="bg-primary text-white hover:bg-primary/80">
-              Marcar como completada
+              {t("markCompleted")}
             </Button>
             <Button variant="outline" asChild>
-              <a href="/lesson/1">Siguiente lección →</a>
+              <Link href="/lesson/1">{t("nextLesson")}</Link>
             </Button>
           </div>
         </div>

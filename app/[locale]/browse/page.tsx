@@ -1,5 +1,6 @@
 import { Filter } from "lucide-react"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Link } from "@/i18n/navigation"
 
 const courses = [
   {
@@ -94,13 +96,15 @@ const levelColors: Record<string, string> = {
 }
 
 export default function BrowsePage() {
+  const t = useTranslations("Browse")
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Catálogo de Cursos</h1>
+        <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
         <p className="mt-2 text-muted-foreground">
-          Cursos estructurados de AutoCAD, Revit y Rhino para arquitectura e ingeniería civil.
+          {t("description")}
         </p>
       </div>
 
@@ -108,18 +112,18 @@ export default function BrowsePage() {
       <div className="mb-8 flex items-center justify-between">
         <Button variant="outline" className="gap-2">
           <Filter className="h-4 w-4" />
-          Filtros
+          {t("filters")}
         </Button>
 
         <Select defaultValue="popular">
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Ordenar por" />
+            <SelectValue placeholder={t("sortBy")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="popular">Más populares</SelectItem>
-            <SelectItem value="newest">Más recientes</SelectItem>
-            <SelectItem value="level-asc">Nivel: Básico primero</SelectItem>
-            <SelectItem value="level-desc">Nivel: Avanzado primero</SelectItem>
+            <SelectItem value="popular">{t("popular")}</SelectItem>
+            <SelectItem value="newest">{t("newest")}</SelectItem>
+            <SelectItem value="level-asc">{t("levelAsc")}</SelectItem>
+            <SelectItem value="level-desc">{t("levelDesc")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -132,7 +136,7 @@ export default function BrowsePage() {
             className="group overflow-hidden transition-shadow hover:shadow-lg"
           >
             {/* Thumbnail */}
-            <a href="/course/1">
+            <Link href="/course/1">
               <div className="relative aspect-video bg-muted overflow-hidden">
                 <Image
                   src={course.image}
@@ -141,7 +145,7 @@ export default function BrowsePage() {
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-            </a>
+            </Link>
 
             <CardHeader className="pb-3">
               <div className="flex items-center gap-2">
@@ -152,11 +156,11 @@ export default function BrowsePage() {
                   {course.level}
                 </Badge>
               </div>
-              <a href="/course/1" className="hover:underline">
+              <Link href="/course/1" className="hover:underline">
                 <h3 className="mt-2 text-base font-semibold leading-tight">
                   {course.title}
                 </h3>
-              </a>
+              </Link>
               <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
                 {course.description}
               </p>
@@ -177,14 +181,14 @@ export default function BrowsePage() {
 
             <CardFooter className="flex items-center justify-between border-t pt-4">
               <span className="text-sm text-muted-foreground">
-                {course.lessons} lecciones
+                {course.lessons} {t("lessons")}
               </span>
               <Button
                 size="sm"
                 className="bg-primary text-white hover:bg-primary/80"
                 asChild
               >
-                <a href="/course/1">Inscribirse</a>
+                <Link href="/course/1">{t("enroll")}</Link>
               </Button>
             </CardFooter>
           </Card>

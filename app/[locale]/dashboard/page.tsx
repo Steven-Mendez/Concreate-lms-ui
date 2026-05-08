@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
+
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Link } from "@/i18n/navigation"
 
 const inProgressCourses = [
   {
@@ -48,6 +51,7 @@ const completedCourses = [
 
 function CourseCard({
   course,
+  t,
 }: {
   course: {
     title: string
@@ -56,10 +60,11 @@ function CourseCard({
     progress: number
     image: string
   }
+  t: any
 }) {
   return (
     <Card className="group overflow-hidden transition-shadow hover:shadow-lg">
-      <a href="/course/1">
+      <Link href="/course/1">
         <div className="relative aspect-video bg-muted overflow-hidden">
           <Image
             src={course.image}
@@ -68,19 +73,19 @@ function CourseCard({
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
-      </a>
+      </Link>
       <CardHeader className="pb-3">
         <Badge variant="outline" className="w-fit text-xs">
           {course.category}
         </Badge>
-        <a href="/course/1" className="hover:underline">
+        <Link href="/course/1" className="hover:underline">
           <h3 className="mt-2 text-base font-semibold">{course.title}</h3>
-        </a>
+        </Link>
         <p className="text-sm text-muted-foreground">{course.module}</p>
       </CardHeader>
       <CardContent className="pb-4">
         <div className="flex items-center justify-between text-xs text-muted-foreground mb-1.5">
-          <span>Progreso</span>
+          <span>{t("progress")}</span>
           <span>{course.progress}%</span>
         </div>
         <Progress value={course.progress} />
@@ -90,9 +95,9 @@ function CourseCard({
           className="w-full bg-primary text-white hover:bg-primary/80"
           asChild
         >
-          <a href="/lesson/1">
-            {course.progress === 100 ? "Repasar Curso" : "Continuar"}
-          </a>
+          <Link href="/lesson/1">
+            {course.progress === 100 ? t("reviewCourse") : t("continue")}
+          </Link>
         </Button>
       </CardFooter>
     </Card>
@@ -100,25 +105,27 @@ function CourseCard({
 }
 
 export default function StudentDashboardPage() {
+  const t = useTranslations("Dashboard")
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Mi Aprendizaje</h1>
+        <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
         <p className="mt-1 text-muted-foreground">
-          Continuá desde donde lo dejaste
+          {t("subtitle")}
         </p>
       </div>
 
       <Tabs defaultValue="in-progress">
         <TabsList>
-          <TabsTrigger value="in-progress">En Progreso</TabsTrigger>
-          <TabsTrigger value="completed">Completados</TabsTrigger>
+          <TabsTrigger value="in-progress">{t("inProgress")}</TabsTrigger>
+          <TabsTrigger value="completed">{t("completed")}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="in-progress" className="mt-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {inProgressCourses.map((course) => (
-              <CourseCard key={course.title} course={course} />
+              <CourseCard key={course.title} course={course} t={t} />
             ))}
           </div>
         </TabsContent>
@@ -126,7 +133,7 @@ export default function StudentDashboardPage() {
         <TabsContent value="completed" className="mt-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {completedCourses.map((course) => (
-              <CourseCard key={course.title} course={course} />
+              <CourseCard key={course.title} course={course} t={t} />
             ))}
           </div>
         </TabsContent>

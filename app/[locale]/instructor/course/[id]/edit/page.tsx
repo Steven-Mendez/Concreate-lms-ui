@@ -1,4 +1,6 @@
 import { ChevronLeft, Plus, Trash2 } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -27,29 +29,31 @@ const modules = [
 ]
 
 export default function EditCoursePage() {
+  const t = useTranslations("InstructorEdit")
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Header */}
       <div className="mb-8 flex items-center justify-between">
         <div>
           <div className="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
-            <a href="/instructor/dashboard" className="hover:text-foreground transition-colors flex items-center gap-1">
+            <Link href="/instructor/dashboard" className="hover:text-foreground transition-colors flex items-center gap-1">
               <ChevronLeft className="h-3.5 w-3.5" />
-              Dashboard
-            </a>
+              {t("dashboard")}
+            </Link>
             <span>›</span>
             <span>UI Design Mastery</span>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight">Edit Course</h1>
-          <p className="mt-1 text-muted-foreground">Update course details, modules, and settings.</p>
+          <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
+          <p className="mt-1 text-muted-foreground">{t("subtitle")}</p>
         </div>
         <div className="flex items-center gap-3">
-          <Badge variant="outline" className="text-sm">Draft</Badge>
+          <Badge variant="outline" className="text-sm">{t("draft")}</Badge>
           <Button variant="outline" asChild>
-            <a href="/instructor/course/1/analytics">View Analytics</a>
+            <Link href="/instructor/course/1/analytics">{t("viewAnalytics")}</Link>
           </Button>
           <Button className="bg-primary text-white hover:bg-primary/80">
-            Save Changes
+            {t("saveChanges")}
           </Button>
         </div>
       </div>
@@ -60,16 +64,16 @@ export default function EditCoursePage() {
           {/* Basic Info */}
           <Card>
             <CardHeader className="pb-4">
-              <h2 className="text-base font-semibold">Course Information</h2>
+              <h2 className="text-base font-semibold">{t("courseInformation")}</h2>
             </CardHeader>
             <CardContent className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="title">Course Title</Label>
+                <Label htmlFor="title">{t("courseTitle")}</Label>
                 <Input id="title" defaultValue="UI Design Mastery" />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description">{t("description")}</Label>
                 <Textarea
                   id="description"
                   rows={4}
@@ -79,30 +83,30 @@ export default function EditCoursePage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="category">Category</Label>
+                  <Label htmlFor="category">{t("category")}</Label>
                   <Select defaultValue="design">
                     <SelectTrigger id="category">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="design">Design</SelectItem>
-                      <SelectItem value="engineering">Engineering</SelectItem>
-                      <SelectItem value="data">Data</SelectItem>
-                      <SelectItem value="business">Business</SelectItem>
+                      <SelectItem value="design">{t("design")}</SelectItem>
+                      <SelectItem value="engineering">{t("engineering")}</SelectItem>
+                      <SelectItem value="data">{t("data")}</SelectItem>
+                      <SelectItem value="business">{t("business")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="level">Level</Label>
+                  <Label htmlFor="level">{t("level")}</Label>
                   <Select defaultValue="intermediate">
                     <SelectTrigger id="level">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="beginner">Beginner</SelectItem>
-                      <SelectItem value="intermediate">Intermediate</SelectItem>
-                      <SelectItem value="advanced">Advanced</SelectItem>
+                      <SelectItem value="beginner">{t("beginner")}</SelectItem>
+                      <SelectItem value="intermediate">{t("intermediate")}</SelectItem>
+                      <SelectItem value="advanced">{t("advanced")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -114,10 +118,10 @@ export default function EditCoursePage() {
           <Card>
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-base font-semibold">Curriculum</h2>
+                <h2 className="text-base font-semibold">{t("curriculum")}</h2>
                 <Button variant="outline" size="sm" className="gap-1.5">
                   <Plus className="h-3.5 w-3.5" />
-                  Add Module
+                  {t("addModule")}
                 </Button>
               </div>
             </CardHeader>
@@ -150,7 +154,7 @@ export default function EditCoursePage() {
                   </ul>
                   <Button variant="ghost" size="sm" className="mt-3 gap-1.5 text-xs text-muted-foreground">
                     <Plus className="h-3 w-3" />
-                    Add Lesson
+                    {t("addLesson")}
                   </Button>
                 </div>
               ))}
@@ -162,19 +166,19 @@ export default function EditCoursePage() {
         <div className="space-y-6 lg:col-span-1">
           <Card>
             <CardHeader className="pb-4">
-              <h2 className="text-base font-semibold">Publish Settings</h2>
+              <h2 className="text-base font-semibold">{t("publishSettings")}</h2>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label>Status</Label>
+                <Label>{t("status")}</Label>
                 <Select defaultValue="draft">
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="draft">Draft</SelectItem>
-                    <SelectItem value="published">Published</SelectItem>
-                    <SelectItem value="archived">Archived</SelectItem>
+                    <SelectItem value="draft">{t("draft")}</SelectItem>
+                    <SelectItem value="published">{t("published")}</SelectItem>
+                    <SelectItem value="archived">{t("archived")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -183,15 +187,15 @@ export default function EditCoursePage() {
 
               <div className="space-y-1 text-sm">
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Created</span>
+                  <span>{t("created")}</span>
                   <span>Apr 10, 2026</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Last saved</span>
+                  <span>{t("lastSaved")}</span>
                   <span>May 5, 2026</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Students</span>
+                  <span>{t("students")}</span>
                   <span>842</span>
                 </div>
               </div>
@@ -203,14 +207,14 @@ export default function EditCoursePage() {
                 size="sm"
                 className="w-full text-destructive hover:bg-destructive/5 hover:text-destructive"
               >
-                Delete Course
+                {t("deleteCourse")}
               </Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="pb-4">
-              <h2 className="text-base font-semibold">Thumbnail</h2>
+              <h2 className="text-base font-semibold">{t("thumbnail")}</h2>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="aspect-video overflow-hidden rounded-md bg-muted">
@@ -222,7 +226,7 @@ export default function EditCoursePage() {
                 />
               </div>
               <Button variant="outline" size="sm" className="w-full">
-                Change Thumbnail
+                {t("changeThumbnail")}
               </Button>
             </CardContent>
           </Card>
