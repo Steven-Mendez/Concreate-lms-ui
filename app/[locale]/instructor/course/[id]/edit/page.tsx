@@ -34,7 +34,7 @@ export default function EditCoursePage() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Header */}
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
             <Link href="/instructor/dashboard" className="hover:text-foreground transition-colors flex items-center gap-1">
@@ -47,7 +47,7 @@ export default function EditCoursePage() {
           <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
           <p className="mt-1 text-muted-foreground">{t("subtitle")}</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Badge variant="outline" className="text-sm">{t("draft")}</Badge>
           <Button variant="outline" asChild>
             <Link href="/instructor/course/1/analytics">{t("viewAnalytics")}</Link>
@@ -81,7 +81,7 @@ export default function EditCoursePage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="category">{t("category")}</Label>
                   <Select defaultValue="design">

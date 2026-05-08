@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation"
 
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
+import { LessonMobileNav } from "@/components/lesson-mobile-nav"
 
 const lessons = [
   { title: "Líneas, polilíneas y rectángulos", completed: true, current: false },
@@ -18,17 +19,25 @@ export default function LessonPage() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-muted-foreground">
+      <nav className="mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
         <Link href="/course/1" className="transition-colors hover:text-foreground">
           AutoCAD para Arquitectura
         </Link>
-        <span className="mx-2">›</span>
+        <span>›</span>
         <Link href="/course/1" className="transition-colors hover:text-foreground">
           Módulo 2: Herramientas de Dibujo
         </Link>
-        <span className="mx-2">›</span>
+        <span>›</span>
         <span className="text-foreground">Lección 3</span>
       </nav>
+
+      {/* Mobile lesson navigation (lg and up uses the sidebar) */}
+      <LessonMobileNav
+        moduleTitle="Módulo 2: Herramientas de Dibujo"
+        progress={50}
+        lessons={lessons}
+        moduleProgressLabel={t("moduleProgress")}
+      />
 
       {/* Two-Column Layout */}
       <div className="flex gap-10">
@@ -50,8 +59,8 @@ export default function LessonPage() {
                   href="/lesson/1"
                   className={`flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                     lesson.current
-                      ? "border-l-2 border-primary bg-zinc-50 font-semibold text-foreground"
-                      : "text-muted-foreground hover:bg-zinc-50"
+                      ? "border-l-2 border-primary bg-accent font-semibold text-foreground"
+                      : "text-muted-foreground hover:bg-accent"
                   }`}
                 >
                   {lesson.completed ? (
@@ -106,7 +115,7 @@ export default function LessonPage() {
           </div>
 
           {/* Navigation */}
-          <div className="mt-8 border-t pt-6 flex items-center justify-between">
+          <div className="mt-8 border-t pt-6 flex flex-wrap items-center justify-between gap-3">
             <Button variant="outline" asChild>
               <Link href="/lesson/1">{t("prevLesson")}</Link>
             </Button>

@@ -1,6 +1,7 @@
 "use client"
 
-import { Bell, HelpCircle } from "lucide-react"
+import { useState } from "react"
+import { Bell, HelpCircle, Menu, X } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 import { usePathname, Link } from "@/i18n/navigation"
@@ -13,6 +14,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 export function Navbar() {
   const pathname = usePathname()
   const t = useTranslations("Navbar")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navLinks = [
     { label: t("browse"), href: "/browse", match: ["/browse", "/course"] },
@@ -37,7 +39,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Center Navigation */}
+        {/* Center Navigation — desktop only */}
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => {
             const active = isActive(link.match, link.href)
@@ -62,27 +64,74 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <LanguageSwitcher />
-          
+
           <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
-          <button className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+          <button className="hidden rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground md:block">
             <Bell className="h-5 w-5" />
           </button>
-          <button className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+          <button className="hidden rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground md:block">
             <HelpCircle className="h-5 w-5" />
           </button>
 
-          <Separator orientation="vertical" className="mx-1 h-6" />
+          <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
-          <Link href="/instructor/dashboard">
+          <Link href="/instructor/dashboard" className="hidden md:block">
             <Avatar className="h-8 w-8 cursor-pointer">
               <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
                 SM
               </AvatarFallback>
             </Avatar>
           </Link>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground md:hidden"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Navigation Drawer */}
+      {mobileMenuOpen && (
+        <nav className="border-t border-border bg-background px-6 py-4 md:hidden">
+          <div className="flex flex-col gap-1">
+            {navLinks.map((link) => {
+              const active = isActive(link.match, link.href)
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href as any}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`rounded-md px-3 py-2.5 text-sm font-medium transition-colors ${
+                    active
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
+            <Separator className="my-2" />
+            <Link
+              href="/instructor/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 rounded-md px-3 py-2.5"
+            >
+              <Avatar className="h-7 w-7">
+                <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
+                  SM
+                </AvatarFallback>
+              </Avatar>
+              <span className="text-sm font-medium text-foreground">My Account</span>
+            </Link>
+          </div>
+        </nav>
+      )}
     </header>
   )
 }

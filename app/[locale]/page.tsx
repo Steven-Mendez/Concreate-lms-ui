@@ -9,28 +9,28 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* 1. Hero Section */}
-      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="mx-auto max-w-7xl px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
             {t("heroTagline")}
           </p>
-          <h1 className="text-5xl font-extrabold tracking-tight text-foreground leading-tight">
+          <h1 className="text-3xl font-extrabold tracking-tight text-foreground leading-tight md:text-5xl">
             {t("heroTitle")}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             {t("heroDescription")}
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center md:mt-10">
             <Link
               href="/browse"
-              className="flex items-center gap-2 rounded-md bg-primary px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5"
+              className="flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5 md:px-8 md:py-4"
             >
               {t("exploreCourses")}
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/dashboard"
-              className="flex items-center gap-2 rounded-md border-2 border-border px-8 py-4 text-sm font-semibold text-foreground transition-all hover:bg-accent hover:text-accent-foreground"
+              className="flex items-center justify-center gap-2 rounded-md border-2 border-border px-6 py-3 text-sm font-semibold text-foreground transition-all hover:bg-accent hover:text-accent-foreground md:px-8 md:py-4"
             >
               {t("myLearning")}
             </Link>
@@ -48,7 +48,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Categories Section */}
-      <section className="bg-muted py-20">
+      <section className="bg-muted py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-foreground">{t("categoriesTitle")}</h2>
@@ -113,10 +113,10 @@ export default function HomePage() {
       </section>
 
       {/* 3. Premium / Dark Section */}
-      <section className="bg-premium py-24 text-premium-foreground">
-        <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section className="bg-premium py-12 text-premium-foreground md:py-24">
+        <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center md:gap-16">
           <div>
-            <h2 className="text-4xl font-bold leading-tight">
+            <h2 className="text-2xl font-bold leading-tight md:text-4xl">
               {t("premiumTitle")}
             </h2>
             <p className="mt-6 text-lg opacity-80">
@@ -153,7 +153,7 @@ export default function HomePage() {
           </div>
           
           {/* Decorative element for the dark section */}
-          <div className="relative aspect-square w-full rounded-2xl bg-premium-muted border border-premium-icon/20 overflow-hidden shadow-2xl">
+          <div className="relative aspect-video w-full rounded-2xl bg-premium-muted border border-premium-icon/20 overflow-hidden shadow-2xl md:aspect-square">
             <Image 
               src="/images/premium_abstract_render_1778200771349.png"
               alt="Concreate PRO Abstract Render"
@@ -172,9 +172,9 @@ export default function HomePage() {
       </section>
 
       {/* 4. Testimonials Section */}
-      <section className="bg-background py-24">
+      <section className="bg-background py-12 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl font-bold text-foreground">{t("testimonialsTitle")}</h2>
             <p className="mt-4 text-lg text-muted-foreground">{t("testimonialsDescription")}</p>
           </div>
@@ -203,7 +203,7 @@ export default function HomePage() {
                 avatar: "https://i.pravatar.cc/150?u=a04258a2462d826712d"
               }
             ].map((testimonial, i) => (
-              <div key={i} className="flex flex-col justify-between rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow hover:shadow-md">
+              <div key={i} className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md md:p-8">
                 <div>
                   <svg className="h-8 w-8 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />

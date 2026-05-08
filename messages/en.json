@@ -51,7 +51,13 @@
     "levelAsc": "Level: Beginner first",
     "levelDesc": "Level: Advanced first",
     "lessons": "lessons",
-    "enroll": "Enroll"
+    "enroll": "Enroll",
+    "searchPlaceholder": "Search courses or instructors…",
+    "allCategories": "All",
+    "resultsCount": "{count} courses",
+    "noResults": "No courses found",
+    "noResultsHint": "Try a different search term or category.",
+    "clearFilters": "Clear filters"
   },
   "Dashboard": {
     "title": "My Learning",

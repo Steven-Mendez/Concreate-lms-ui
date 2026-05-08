@@ -51,7 +51,13 @@
     "levelAsc": "Nivel: Básico primero",
     "levelDesc": "Nivel: Avanzado primero",
     "lessons": "lecciones",
-    "enroll": "Inscribirse"
+    "enroll": "Inscribirse",
+    "searchPlaceholder": "Buscar cursos o instructores…",
+    "allCategories": "Todos",
+    "resultsCount": "{count} cursos",
+    "noResults": "No se encontraron cursos",
+    "noResultsHint": "Intenta con otro término de búsqueda o categoría.",
+    "clearFilters": "Limpiar filtros"
   },
   "Dashboard": {
     "title": "Mi Aprendizaje",

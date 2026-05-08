@@ -51,7 +51,7 @@ export default function CourseAnalyticsPage() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Header */}
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="mb-2 flex items-center gap-2 text-sm text-muted-foreground">
             <Link href="/instructor/dashboard" className="hover:text-foreground transition-colors flex items-center gap-1">
@@ -64,7 +64,7 @@ export default function CourseAnalyticsPage() {
           <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
           <p className="mt-1 text-muted-foreground">{t("subtitle")}</p>
         </div>
-        <Button variant="outline" asChild>
+        <Button variant="outline" className="w-fit" asChild>
           <Link href="/instructor/course/1/edit">{t("editCourse")}</Link>
         </Button>
       </div>
@@ -134,6 +134,7 @@ export default function CourseAnalyticsPage() {
       <Separator className="my-8" />
       <h2 className="mb-4 text-lg font-semibold">{t("recentStudents")}</h2>
       <Card>
+        <div className="overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
@@ -170,6 +171,7 @@ export default function CourseAnalyticsPage() {
             ))}
           </TableBody>
         </Table>
+        </div>
       </Card>
     </div>
   )

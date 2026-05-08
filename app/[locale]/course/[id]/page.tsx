@@ -67,18 +67,18 @@ export default function CourseDetailPage() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-muted-foreground">
+      <nav className="mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
         <Link href="/browse" className="hover:text-foreground transition-colors">
           {t("catalog")}
         </Link>
-        <span className="mx-2">›</span>
+        <span>›</span>
         <span className="text-foreground">AutoCAD para Arquitectura</span>
       </nav>
 
       {/* Two-Column Layout */}
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
-        {/* Left Column (spans 2) */}
-        <div className="lg:col-span-2">
+        {/* Left Column (spans 2) — rendered second on mobile so the CTA shows first */}
+        <div className="order-2 lg:order-1 lg:col-span-2">
           {/* Course thumbnail */}
           <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-xl bg-muted">
             <Image
@@ -147,7 +147,7 @@ export default function CourseDetailPage() {
                       <li key={lessonIdx}>
                         <Link
                           href="/lesson/1"
-                          className="flex items-center justify-between rounded-md px-1 py-0.5 hover:bg-zinc-50 transition-colors"
+                          className="flex items-center justify-between rounded-md px-1 py-0.5 hover:bg-accent transition-colors"
                         >
                           <div className="flex items-center gap-2">
                             {lesson.completed ? (
@@ -178,8 +178,8 @@ export default function CourseDetailPage() {
           </Accordion>
         </div>
 
-        {/* Right Column (sticky sidebar card) */}
-        <div className="lg:col-span-1">
+        {/* Right Column (sticky sidebar card) — rendered first on mobile as a CTA above content */}
+        <div className="order-1 lg:order-2 lg:col-span-1">
           <div className="sticky top-24">
             <Card>
               <CardHeader className="pb-4">
