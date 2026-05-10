@@ -19,12 +19,12 @@ import {
 
 const modules = [
   {
-    title: "Design Foundations",
-    lessons: ["Introduction to UI Design", "Color Theory & Palettes", "Typography Fundamentals", "Layout & Spacing"],
+    title: "Conceptos Básicos",
+    lessons: ["Interfaz de Usuario", "Herramientas de Dibujo", "Capas y Propiedades", "Bloques y Atributos"],
   },
   {
-    title: "Component Design",
-    lessons: ["Buttons & Form Elements", "Cards & Containers", "Navigation Patterns", "Data Display Components"],
+    title: "Documentación",
+    lessons: ["Cotas y Texto", "Presentación (Layouts)", "Ploteo y Exportación", "Estilos de Impresión"],
   },
 ]
 
@@ -42,7 +42,7 @@ export default function EditCoursePage() {
               {t("dashboard")}
             </Link>
             <span>›</span>
-            <span>UI Design Mastery</span>
+            <span>AutoCAD Básico</span>
           </div>
           <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
           <p className="mt-1 text-muted-foreground">{t("subtitle")}</p>
@@ -69,7 +69,7 @@ export default function EditCoursePage() {
             <CardContent className="space-y-5">
               <div className="space-y-2">
                 <Label htmlFor="title">{t("courseTitle")}</Label>
-                <Input id="title" defaultValue="UI Design Mastery" />
+                <Input id="title" defaultValue="AutoCAD Básico" />
               </div>
 
               <div className="space-y-2">
@@ -220,7 +220,7 @@ export default function EditCoursePage() {
               <div className="aspect-video overflow-hidden rounded-md bg-muted">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/assets/images/ui-design.png"
+                  src="/assets/images/autocad-basico.png"
                   alt="Course thumbnail"
                   className="h-full w-full object-cover"
                 />
