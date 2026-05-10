@@ -1,12 +1,42 @@
 {
+  "Metadata": {
+    "siteTitle": "Concreate — Learn by Creating",
+    "siteDescription": "Educational platform for AutoCAD, Revit, and Rhino — built for architecture and civil engineering students. Structured courses, real projects, and professional certification.",
+    "browseTitle": "Course catalog",
+    "browseDescription": "Browse structured AutoCAD, Revit, and Rhino courses for architecture and civil engineering.",
+    "dashboardTitle": "My learning"
+  },
+  "A11y": {
+    "skipToContent": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation",
+    "lessonNavigation": "Lesson navigation",
+    "playLesson": "Play lesson",
+    "courseProgress": "Course progress: {percent}%",
+    "footer": "Footer",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
   "Navbar": {
     "browse": "Browse",
     "myLearning": "My Learning",
     "mentors": "Mentors",
-    "community": "Community"
+    "community": "Community",
+    "notifications": "Notifications",
+    "help": "Help",
+    "myAccount": "My account"
+  },
+  "ThemeToggle": {
+    "toggleTheme": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "LanguageSwitcher": {
+    "changeLanguage": "Change language"
   },
   "Footer": {
-    "copyright": "© 2026 Concreate",
+    "copyright": "© {year} Concreate",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "helpCenter": "Help Center",
@@ -53,6 +83,9 @@
     "lessons": "lessons",
     "enroll": "Enroll",
     "searchPlaceholder": "Search courses or instructors…",
+    "searchAriaLabel": "Search courses",
+    "clearSearch": "Clear search",
+    "filterByCategory": "Filter by category",
     "allCategories": "All",
     "resultsCount": "{count} courses",
     "noResults": "No courses found",
@@ -70,6 +103,7 @@
   },
   "CourseDetail": {
     "catalog": "Catalog",
+    "home": "Home",
     "hours": "hours",
     "lessons": "lessons",
     "courseContent": "Course Content",
@@ -80,7 +114,17 @@
     "moduleProgress": "Module progress",
     "prevLesson": "← Previous lesson",
     "markCompleted": "Mark as completed",
-    "nextLesson": "Next lesson →"
+    "nextLesson": "Next lesson →",
+    "playLesson": "Play lesson"
+  },
+  "Errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you're looking for doesn't exist or has been moved. Head back to the catalog to keep learning.",
+    "errorTitle": "Something went wrong",
+    "errorDescription": "An unexpected error occurred. Please try again.",
+    "tryAgain": "Try again",
+    "backToHome": "Back to home",
+    "browseCourses": "Browse courses"
   },
   "InstructorDashboard": {
     "title": "Dashboard",

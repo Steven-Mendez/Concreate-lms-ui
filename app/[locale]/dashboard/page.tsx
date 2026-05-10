@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
@@ -7,6 +8,11 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Link } from "@/i18n/navigation"
+
+export const metadata: Metadata = {
+  title: "Mi aprendizaje",
+  robots: { index: false, follow: false },
+}
 
 const inProgressCourses = [
   {
@@ -60,7 +66,7 @@ function CourseCard({
     progress: number
     image: string
   }
-  t: any
+  t: (key: string) => string
 }) {
   return (
     <Card className="group overflow-hidden transition-shadow hover:shadow-lg">
@@ -70,6 +76,7 @@ function CourseCard({
             src={course.image}
             alt={course.title}
             fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
@@ -88,7 +95,10 @@ function CourseCard({
           <span>{t("progress")}</span>
           <span>{course.progress}%</span>
         </div>
-        <Progress value={course.progress} />
+        <Progress
+          value={course.progress}
+          aria-label={`${t("progress")}: ${course.progress}%`}
+        />
       </CardContent>
       <CardFooter className="border-t pt-4">
         <Button

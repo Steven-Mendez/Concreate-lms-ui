@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Plus, Users, BookOpen, Star, Clock, BarChart2, Pencil, TrendingUp } from "lucide-react"
 import { useTranslations } from "next-intl"
 
@@ -6,6 +7,10 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Link } from "@/i18n/navigation"
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+}
 
 const courses = [
   { title: "AutoCAD para Arquitectura — Nivel Básico", status: "Published" as const, enrolled: 842, lastUpdated: "2 may 2026" },

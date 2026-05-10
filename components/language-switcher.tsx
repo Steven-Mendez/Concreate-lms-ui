@@ -1,6 +1,8 @@
 "use client"
 
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
+import { Globe } from "lucide-react"
+
 import { usePathname, useRouter } from "@/i18n/navigation"
 import {
   Select,
@@ -9,12 +11,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Globe } from "lucide-react"
 
 export function LanguageSwitcher() {
   const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
+  const t = useTranslations("LanguageSwitcher")
 
   function onSelectChange(newLocale: string) {
     router.replace(pathname, { locale: newLocale })
@@ -22,9 +24,15 @@ export function LanguageSwitcher() {
 
   return (
     <div className="flex items-center gap-2">
-      <Globe className="h-4 w-4 text-zinc-500" />
+      <Globe
+        className="h-4 w-4 text-muted-foreground"
+        aria-hidden="true"
+      />
       <Select value={locale} onValueChange={onSelectChange}>
-        <SelectTrigger className="h-8 w-[100px] bg-transparent border-0 shadow-none text-sm font-medium text-zinc-600 focus:ring-0 focus:ring-offset-0">
+        <SelectTrigger
+          aria-label={t("changeLanguage")}
+          className="h-8 w-[100px] border-0 bg-transparent text-sm font-medium text-muted-foreground shadow-none hover:text-foreground data-[state=open]:text-foreground"
+        >
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

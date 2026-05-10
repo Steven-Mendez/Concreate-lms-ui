@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import {
   BarChart3,
   Users,
@@ -8,6 +9,10 @@ import {
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+}
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"

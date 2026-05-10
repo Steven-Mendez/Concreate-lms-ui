@@ -1,12 +1,42 @@
 {
+  "Metadata": {
+    "siteTitle": "Concreate — Aprende Creando",
+    "siteDescription": "Plataforma educativa de AutoCAD, Revit y Rhino para estudiantes de arquitectura e ingeniería civil. Cursos estructurados, proyectos reales y certificación profesional.",
+    "browseTitle": "Catálogo de cursos",
+    "browseDescription": "Explora cursos estructurados de AutoCAD, Revit y Rhino para arquitectura e ingeniería civil.",
+    "dashboardTitle": "Mi aprendizaje"
+  },
+  "A11y": {
+    "skipToContent": "Saltar al contenido",
+    "mainNavigation": "Navegación principal",
+    "footerNavigation": "Navegación del pie de página",
+    "lessonNavigation": "Navegación de la lección",
+    "playLesson": "Reproducir lección",
+    "courseProgress": "Progreso del curso: {percent}%",
+    "footer": "Pie de página",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
   "Navbar": {
     "browse": "Catálogo",
     "myLearning": "Mi Aprendizaje",
     "mentors": "Mentores",
-    "community": "Comunidad"
+    "community": "Comunidad",
+    "notifications": "Notificaciones",
+    "help": "Ayuda",
+    "myAccount": "Mi cuenta"
+  },
+  "ThemeToggle": {
+    "toggleTheme": "Cambiar tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "LanguageSwitcher": {
+    "changeLanguage": "Cambiar idioma"
   },
   "Footer": {
-    "copyright": "© 2026 Concreate",
+    "copyright": "© {year} Concreate",
     "privacyPolicy": "Política de Privacidad",
     "termsOfService": "Términos de Servicio",
     "helpCenter": "Centro de Ayuda",
@@ -53,6 +83,9 @@
     "lessons": "lecciones",
     "enroll": "Inscribirse",
     "searchPlaceholder": "Buscar cursos o instructores…",
+    "searchAriaLabel": "Buscar cursos",
+    "clearSearch": "Limpiar búsqueda",
+    "filterByCategory": "Filtrar por categoría",
     "allCategories": "Todos",
     "resultsCount": "{count} cursos",
     "noResults": "No se encontraron cursos",
@@ -70,6 +103,7 @@
   },
   "CourseDetail": {
     "catalog": "Catálogo",
+    "home": "Inicio",
     "hours": "horas",
     "lessons": "lecciones",
     "courseContent": "Contenido del Curso",
@@ -80,7 +114,17 @@
     "moduleProgress": "Progreso del módulo",
     "prevLesson": "← Lección anterior",
     "markCompleted": "Marcar como completada",
-    "nextLesson": "Siguiente lección →"
+    "nextLesson": "Siguiente lección →",
+    "playLesson": "Reproducir lección"
+  },
+  "Errors": {
+    "notFoundTitle": "Página no encontrada",
+    "notFoundDescription": "La página que buscás no existe o fue movida. Volvé al catálogo para seguir aprendiendo.",
+    "errorTitle": "Algo salió mal",
+    "errorDescription": "Se produjo un error inesperado. Por favor, intentá nuevamente.",
+    "tryAgain": "Reintentar",
+    "backToHome": "Volver al inicio",
+    "browseCourses": "Ver catálogo"
   },
   "InstructorDashboard": {
     "title": "Dashboard",
